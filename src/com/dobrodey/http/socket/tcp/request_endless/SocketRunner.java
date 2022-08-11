@@ -1,4 +1,4 @@
-package com.dobrodey.http.socket.one.request;
+package com.dobrodey.http.socket.tcp.request_endless;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 //Client
 public class SocketRunner {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws UnknownHostException {
         //http - 80
         //https - 443
         //tcp
@@ -21,9 +21,14 @@ public class SocketRunner {
              DataInputStream inputStream = new DataInputStream(socket.getInputStream());
              Scanner scanner = new Scanner(System.in);) {
 
-            String request = scanner.nextLine();
-            outputStream.writeUTF(request);
-            System.out.println("Response from server: " + inputStream.readUTF());
+            while (scanner.hasNextLine()) {
+                String request = scanner.nextLine();
+                outputStream.writeUTF(request);
+                System.out.println("Response from server: " + inputStream.readUTF());
+            }
+        }
+        catch (IOException e){
+            System.out.println("No connection with server");
         }
     }
 }

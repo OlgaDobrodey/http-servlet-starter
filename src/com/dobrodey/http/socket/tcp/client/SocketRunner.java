@@ -1,4 +1,4 @@
-package com.dobrodey.http.socket.only.client;
+package com.dobrodey.http.socket.tcp.client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

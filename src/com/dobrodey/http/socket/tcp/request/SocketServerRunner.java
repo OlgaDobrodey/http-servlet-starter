@@ -1,4 +1,4 @@
-package com.dobrodey.http.socket.server.and.client;
+package com.dobrodey.http.socket.tcp.request;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -17,12 +17,11 @@ public class SocketServerRunner {
              Scanner scanner = new Scanner(System.in)) {
 
             String request = inputStream.readUTF();
-            while (!request.equals("stop")) {
-                System.out.println("Client request: " + request);
-                String response = scanner.nextLine();
-                outputStream.writeUTF(response);
-                request = inputStream.readUTF();
-            }
+
+            System.out.println("Client request: " + request);
+            String response = scanner.nextLine();
+            outputStream.writeUTF(response);
+
         }
     }
 }

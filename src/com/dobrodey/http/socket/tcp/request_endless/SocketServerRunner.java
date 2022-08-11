@@ -1,4 +1,4 @@
-package com.dobrodey.http.socket.one.request;
+package com.dobrodey.http.socket.tcp.request_endless;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -17,11 +17,12 @@ public class SocketServerRunner {
              Scanner scanner = new Scanner(System.in)) {
 
             String request = inputStream.readUTF();
-
-            System.out.println("Client request: " + request);
-            String response = scanner.nextLine();
-            outputStream.writeUTF(response);
-
+            while (!request.equals("stop")) {
+                System.out.println("Client request: " + request);
+                String response = scanner.nextLine();
+                outputStream.writeUTF(response);
+                request = inputStream.readUTF();
+            }
         }
     }
 }
